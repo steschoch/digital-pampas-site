@@ -1,0 +1,145 @@
+/* ─── Digital Pampas Design Tokens ──────────────────────────────────────── */
+
+/* Fonts */
+:root {
+  --dp-sem-font-display: 'Space Grotesk', sans-serif;
+  --dp-sem-font-body: 'Figtree', sans-serif;
+  --dp-sem-font-code: 'JetBrains Mono', monospace;
+
+  /* Type scale */
+  --dp-font-size-xs:  0.75rem;   /* 12px */
+  --dp-font-size-sm:  0.875rem;  /* 14px */
+  --dp-font-size-md:  1rem;      /* 16px */
+  --dp-font-size-lg:  1.125rem;  /* 18px */
+  --dp-font-size-xl:  1.25rem;   /* 20px */
+  --dp-font-size-2xl: 1.5rem;    /* 24px */
+  --dp-font-size-3xl: 2rem;      /* 32px */
+  --dp-font-size-4xl: 2.5rem;    /* 40px */
+  --dp-font-size-5xl: 3.5rem;    /* 56px */
+  --dp-font-size-600: 3rem;      /* 48px — H1 mobile size */
+  --dp-font-size-6xl: 4.5rem;    /* 72px */
+
+  /* Spacing */
+  --dp-space-1:  0.25rem;   /* 4px  */
+  --dp-space-2:  0.5rem;    /* 8px  */
+  --dp-space-3:  0.75rem;   /* 12px */
+  --dp-space-4:  1rem;      /* 16px */
+  --dp-space-5:  1.25rem;   /* 20px */
+  --dp-space-6:  1.5rem;    /* 24px */
+  --dp-space-8:  2rem;      /* 32px */
+  --dp-space-10: 2.5rem;    /* 40px */
+  --dp-space-12: 3rem;      /* 48px */
+  --dp-space-16: 4rem;      /* 64px */
+  --dp-space-20: 5rem;      /* 80px */
+  --dp-space-24: 6rem;      /* 96px */
+
+  /* Semantic gaps / sections */
+  --dp-sem-space-gap-xs:    var(--dp-space-2);
+  --dp-sem-space-gap-sm:    var(--dp-space-4);
+  --dp-sem-space-gap-md:    var(--dp-space-6);
+  --dp-sem-space-gap-lg:    var(--dp-space-8);
+  --dp-sem-space-section-y: var(--dp-space-24);
+
+  /* Radius */
+  --dp-sem-radius-card:   1rem;     /* 16px */
+  --dp-sem-radius-button: 0.5rem;   /* 8px  */
+  --dp-sem-radius-pill:   62.5rem;  /* 999px */
+
+  /* Motion */
+  --dp-sem-motion-interactive: 150ms;
+  --dp-sem-motion-component:   250ms;
+  --dp-sem-motion-layout:      350ms;
+  --dp-sem-motion-page:        600ms;
+  --dp-transition-spring:      400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Focus stroke width */
+  --dp-sem-stroke-focus: 2px;
+
+  /* Shadows */
+  --dp-sem-shadow-card:       0 2px 8px rgba(0,0,0,0.18), 0 1px 2px rgba(0,0,0,0.12);
+  --dp-sem-shadow-card-hover: 0 16px 48px rgba(0,0,0,0.42), 0 4px 16px rgba(0,0,0,0.22);
+}
+
+/* ─── DARK (default) ─────────────────────────────────────────────────────── */
+:root,
+[data-color-scheme="dark"] {
+  /* Surfaces */
+  --dp-color-surface:               #0B0D14;
+  --dp-color-surface-container-low: #11141E;
+  --dp-color-surface-container:     #171B28;
+  --dp-color-surface-container-high:#1E2235;
+  --dp-color-surface-variant:       #252B3E;
+
+  /* Tinted surfaces */
+  --dp-color-surface-cyan:   #071A1F;
+  --dp-color-surface-coral:  #1F100D;
+  --dp-color-surface-plum:   #160F1F;
+  --dp-color-surface-sky-blue: #0D1420;
+
+  /* Primary (electric cyan) */
+  --dp-color-primary:    #00E5FF;
+  --dp-color-on-primary: #001A1F;
+  --dp-color-primary-container: #003A45;
+  --dp-color-on-primary-container: #87EFFF;
+
+  /* Secondary (coral) */
+  --dp-color-secondary:    #FF6B6B;
+  --dp-color-on-secondary: #2B0000;
+
+  /* Tertiary (deep indigo) */
+  --dp-color-tertiary:    #818CF8;
+  --dp-color-on-tertiary: #0F1270;
+
+  /* Support */
+  --dp-color-support-plum:     #C084FC;
+  --dp-color-support-sky-blue: #38BDF8;
+
+  /* Text */
+  --dp-color-on-surface:         #E8EAF6;
+  --dp-color-on-surface-variant: #8A93B2;
+
+  /* Borders */
+  --dp-color-outline:         rgba(255, 255, 255, 0.10);
+  --dp-color-outline-variant: rgba(255, 255, 255, 0.05);
+}
+
+/* ─── LIGHT ──────────────────────────────────────────────────────────────── */
+[data-color-scheme="light"] {
+  --dp-color-surface:               #F4F5FA;
+  --dp-color-surface-container-low: #ECEEF5;
+  --dp-color-surface-container:     #E3E5EF;
+  --dp-color-surface-container-high:#D8DAE8;
+  --dp-color-surface-variant:       #CDD0E0;
+
+  --dp-color-surface-cyan:    #E0F7FA;
+  --dp-color-surface-coral:   #FFF0EE;
+  --dp-color-surface-plum:    #F3E8FF;
+  --dp-color-surface-sky-blue:#E1F5FE;
+
+  --dp-color-primary:    #0097A7;
+  --dp-color-on-primary: #FFFFFF;
+  --dp-color-primary-container: #B2EBF2;
+  --dp-color-on-primary-container: #003840;
+
+  --dp-color-secondary:    #E53935;
+  --dp-color-on-secondary: #FFFFFF;
+
+  --dp-color-tertiary:    #3F51B5;
+  --dp-color-on-tertiary: #FFFFFF;
+
+  --dp-color-support-plum:     #9C27B0;
+  --dp-color-support-sky-blue: #0288D1;
+
+  --dp-color-on-surface:         #0B0D14;
+  --dp-color-on-surface-variant: #424770;
+
+  --dp-color-outline:         rgba(0, 0, 0, 0.10);
+  --dp-color-outline-variant: rgba(0, 0, 0, 0.05);
+}
+
+/* ─── Global resets (non-Tailwind) ───────────────────────────────────────── */
+html[data-color-scheme] body {
+  background-color: var(--dp-color-surface);
+  color: var(--dp-color-on-surface);
+  font-family: var(--dp-sem-font-body);
+}

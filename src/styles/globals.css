@@ -1,0 +1,38 @@
+/* ─── Reset ──────────────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;}
+body{margin:0;overflow-x:clip;}
+img,video{max-width:100%;height:auto;display:block;}
+button{cursor:pointer;border:none;background:none;padding:0;font:inherit;}
+a{text-decoration:none;color:inherit;}
+ul,ol{list-style:none;margin:0;padding:0;}
+p,h1,h2,h3{margin:0;}
+
+/* ─── Tokens ─────────────────────────────────────────────────────────
+   Design tokens (Layer 1 primitives + Layer 2 semantics) are the single
+   source of truth in the Design System and are imported in the app entry:
+     import '@steschoch/digital-pampas-ds/globals.css'
+   This file only holds product-level base styles.                        */
+
+/* ─── Base ───────────────────────────────────────────────────────── */
+html{
+  font-family:var(--dp-sem-font-body);
+  font-size:var(--dp-font-size-100);
+  color:var(--dp-color-on-surface);
+  background-color:var(--dp-color-surface);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  scroll-behavior:smooth;
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+}
+:focus-visible{
+  outline: var(--dp-sem-stroke-focus) solid var(--dp-color-primary);
+  outline-offset: var(--dp-focus-offset);
+  border-radius: var(--dp-sem-radius-chip);
+}

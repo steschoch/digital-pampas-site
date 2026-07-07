@@ -1,0 +1,185 @@
+/* ─── Section ─────────────────────────────────────────────────────── */
+
+.section {
+  background-color: var(--dp-color-surface);
+  padding-block: 96px;
+}
+
+.container {
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: 120px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Page header ─────────────────────────────────────────────────── */
+
+.pageHeader {
+  padding-block-end: 64px;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  font-family: var(--dp-sem-font-code);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--dp-color-tertiary);
+}
+
+.h1 {
+  margin: 0;
+  font-family: var(--dp-sem-font-display);
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--dp-color-on-surface);
+}
+
+.subtitle {
+  margin: 16px 0 0;
+  font-family: var(--dp-sem-font-body);
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--dp-color-on-surface-variant);
+  max-width: 640px;
+}
+
+/* ─── Grid ────────────────────────────────────────────────────────── */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.cardWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Card ────────────────────────────────────────────────────────── */
+
+.card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 28px;
+  border-radius: var(--dp-sem-radius-card);
+  border: 1px solid var(--dp-color-outline-variant);
+  background-color: var(--dp-color-surface-container-low);
+  box-shadow: var(--dp-sem-shadow-card);
+  transition:
+    transform    var(--dp-sem-motion-component),
+    box-shadow   var(--dp-sem-motion-component);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--dp-sem-shadow-card-hover);
+}
+
+/* ─── Tags ────────────────────────────────────────────────────────── */
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.tag {
+  font-family: var(--dp-sem-font-code);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--dp-color-on-surface-variant);
+  border: 1px solid var(--dp-color-outline-variant);
+  border-radius: 9999px;
+  padding: 2px 8px;
+  white-space: nowrap;
+}
+
+/* ─── Card content ────────────────────────────────────────────────── */
+
+.cardTitle {
+  margin: 0 0 12px;
+  font-family: var(--dp-sem-font-display);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--dp-color-on-surface);
+}
+
+.cardExcerpt {
+  margin: 0;
+  flex: 1;
+  font-family: var(--dp-sem-font-body);
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--dp-color-on-surface-variant);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ─── Card footer ─────────────────────────────────────────────────── */
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--dp-color-outline-variant);
+}
+
+.cardMeta {
+  font-family: var(--dp-sem-font-code);
+  font-size: 12px;
+  color: var(--dp-color-on-surface-variant);
+  opacity: 0.7;
+}
+
+.readLink {
+  font-family: var(--dp-sem-font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dp-color-primary);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity var(--dp-sem-motion-interactive);
+}
+
+.readLink:hover { opacity: 0.75; }
+
+.readLink:focus-visible {
+  outline: 2px solid var(--dp-color-primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ─── Responsive ──────────────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .container { padding-inline: 48px; }
+  .grid      { grid-template-columns: 1fr 1fr; }
+  .h1        { font-size: 48px; }
+}
+
+@media (max-width: 768px) {
+  .section    { padding-block: 64px; }
+  .container  { padding-inline: 24px; }
+  .grid       { grid-template-columns: 1fr; }
+  .h1         { font-size: 40px; }
+  .cardFooter { flex-direction: column; align-items: flex-start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card         { transition: none; }
+  .card:hover   { transform: none; box-shadow: var(--dp-sem-shadow-card); }
+  .readLink     { transition: none; }
+}

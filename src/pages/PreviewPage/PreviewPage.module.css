@@ -1,0 +1,76 @@
+.page {
+  min-height: 100vh;
+  background-color: var(--dp-color-surface);
+}
+
+/* ─── Selector bar ─────────────────────────────────────────────────── */
+.bar {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(8, 14, 30, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 100px;
+  white-space: nowrap;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+
+[data-color-scheme="light"] .bar {
+  background: rgba(248,250,255,0.90);
+  border-color: rgba(8,14,30,0.10);
+  box-shadow: 0 8px 32px rgba(8,14,30,0.15);
+}
+
+.barLabel {
+  font-family: var(--dp-sem-font-code);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--dp-color-on-surface-variant);
+  padding-right: 4px;
+}
+
+.varBtn {
+  font-family: var(--dp-sem-font-body);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 14px;
+  border-radius: 100px;
+  color: var(--dp-color-on-surface-variant);
+  border: 1px solid transparent;
+  transition: all 150ms ease;
+  text-decoration: none;
+}
+
+.varBtn:hover {
+  color: var(--dp-color-on-surface);
+  border-color: var(--dp-color-outline);
+}
+
+.varBtnActive {
+  background: var(--dp-color-primary);
+  color: var(--dp-color-on-primary);
+  border-color: transparent;
+}
+
+.barDesc {
+  font-family: var(--dp-sem-font-code);
+  font-size: 10px;
+  color: var(--dp-color-on-surface-variant);
+  opacity: 0.70;
+  padding-left: 8px;
+  border-left: 1px solid rgba(255,255,255,0.10);
+  max-width: 320px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+[data-color-scheme="light"] .barDesc {
+  border-color: rgba(8,14,30,0.10);
+}

@@ -1,0 +1,147 @@
+/* ─── Section ─────────────────────────────────────────────────────── */
+
+.section {
+  background-color: var(--dp-color-surface);
+  padding-block: var(--dp-space-24, 6rem);
+  border-top: 1px solid var(--dp-color-outline-variant);
+}
+
+.container {
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--dp-space-12, 3rem);
+}
+
+/* ─── Header ──────────────────────────────────────────────────────── */
+
+.eyebrow {
+  margin: 0 0 var(--dp-space-3, 0.75rem);
+  font-family: var(--dp-sem-font-code, 'JetBrains Mono', monospace);
+  font-size: var(--dp-font-size-xs, 0.75rem);
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--dp-color-on-surface-variant);
+}
+
+.h2 {
+  margin: 0;
+  font-family: var(--dp-sem-font-display, 'Space Grotesk', sans-serif);
+  font-size: clamp(var(--dp-font-size-3xl, 2rem), 3.2vw, var(--dp-font-size-4xl, 2.5rem));
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--dp-color-on-surface);
+}
+
+/* ─── 2×2 grid ────────────────────────────────────────────────────── */
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--dp-space-5, 1.25rem);
+  align-items: stretch;
+}
+
+/* AnimatedSection fills its grid cell */
+.cardWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Card ────────────────────────────────────────────────────────── */
+
+.card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--dp-space-4, 1rem);
+  padding: var(--dp-space-8, 2rem);
+  border-radius: var(--dp-sem-radius-card, 1rem);
+  border: 1px solid var(--dp-color-outline);
+  background-color: var(--dp-color-surface-container-low);
+
+  /* Smooth lift on hover */
+  transition:
+    transform  var(--dp-sem-motion-component, 250ms) cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow var(--dp-sem-motion-component, 250ms) cubic-bezier(0.16, 1, 0.3, 1),
+    border-color var(--dp-sem-motion-component, 250ms) ease;
+}
+
+.card:hover {
+  transform:    translateY(-5px);
+  box-shadow:   var(--dp-sem-shadow-card-hover);
+  border-color: var(--dp-color-outline);
+}
+
+/* ─── Card anatomy ────────────────────────────────────────────────── */
+
+.num {
+  font-family: var(--dp-sem-font-code, 'JetBrains Mono', monospace);
+  font-size: var(--dp-font-size-xs, 0.75rem);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--dp-color-on-surface-variant);
+  opacity: 0.5;
+  user-select: none;
+}
+
+.cardTitle {
+  margin: 0;
+  font-family: var(--dp-sem-font-display, 'Space Grotesk', sans-serif);
+  font-size: var(--dp-font-size-xl, 1.25rem);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--dp-color-secondary); /* coral */
+}
+
+.cardBody {
+  margin: 0;
+  font-family: var(--dp-sem-font-body, 'Figtree', sans-serif);
+  font-size: var(--dp-font-size-md, 1rem);
+  line-height: 1.65;
+  color: var(--dp-color-on-surface-variant);
+}
+
+/* ─── Responsive ──────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .section {
+    padding-block: var(--dp-space-16, 4rem);
+  }
+
+  .container {
+    padding-inline: 20px;
+    gap: var(--dp-space-8, 2rem);
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--dp-space-4, 1rem);
+  }
+
+  .card {
+    padding: var(--dp-space-6, 1.5rem);
+  }
+
+  .h2 {
+    font-size: var(--dp-font-size-3xl, 2rem);
+  }
+}
+
+/* ─── Reduced motion ──────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+
+  .card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
