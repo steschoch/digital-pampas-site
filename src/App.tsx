@@ -11,6 +11,7 @@ import {
   HowWeBuildIt,
   Proof,
   WaysToWork,
+  WhoYouWorkWith,
   FinalCTA,
   Footer,
   PageLayout,
@@ -37,6 +38,8 @@ function HomePage() {
         <Proof />
         {/* WaysToWork renders its own <section id="ways"> */}
         <WaysToWork />
+        {/* WhoYouWorkWith renders its own <section id="who-you-work-with"> */}
+        <WhoYouWorkWith photoSrc="/leandro-brufal.jpg" />
         {/* FinalCTA renders its own <section id="book-call"> */}
         <FinalCTA />
       </main>
