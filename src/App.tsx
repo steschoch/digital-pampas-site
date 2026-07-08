@@ -41,7 +41,16 @@ function HomePage() {
         <FinalCTA />
       </main>
       {/* Footer renders its own <footer id="about"> */}
-      <Footer />
+      <Footer
+        portalHref="https://digital-pampas-portal.vercel.app/"
+        founder={{
+          name: 'Leandro Brufal',
+          role: 'Founder & GTM Engineer',
+          location: 'Florianópolis, Brazil · Argentine · works globally',
+          linkedinHref: 'https://www.linkedin.com/in/lbrufal/',
+          photoSrc: '/leandro-brufal.jpg',
+        }}
+      />
     </>
   );
 }
