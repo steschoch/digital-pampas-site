@@ -49,7 +49,6 @@ function HomePage() {
         founder={{
           name: 'Leandro Brufal',
           role: 'Founder & GTM Engineer',
-          location: 'Florianópolis, Brazil · Argentine · works globally',
           linkedinHref: 'https://www.linkedin.com/in/lbrufal/',
           photoSrc: '/leandro-brufal.jpg',
         }}

@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@steschoch/digital-pampas-ds": "^1.2.0",
+    "@steschoch/digital-pampas-ds": "^1.2.1",
     "lucide-react": "^0.487.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
