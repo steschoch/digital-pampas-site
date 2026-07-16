@@ -167,7 +167,7 @@ export default function CaseStudyPage() {
                   Book a call
                 </a>
                 <Link to="/case-studies" className={styles.ctaSecondary}>
-                  View all cases →
+                  View all cases
                 </Link>
               </div>
             </div>

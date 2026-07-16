@@ -46,6 +46,7 @@ function HomePage() {
       {/* Footer renders its own <footer id="about"> */}
       <Footer
         portalHref="https://digital-pampas-portal.vercel.app/"
+        emailHref="/#book-call"
         founder={{
           name: 'Leandro Brufal',
           role: 'Founder & GTM Engineer',

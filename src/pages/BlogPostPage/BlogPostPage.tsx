@@ -113,7 +113,7 @@ export default function BlogPostPage() {
                 Book a call
               </a>
               <Link to="/blog" className={styles.ctaGhost}>
-                Read more posts →
+                Read more posts
               </Link>
             </div>
           </AnimatedSection>
