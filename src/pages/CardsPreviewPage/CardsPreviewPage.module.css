@@ -1,0 +1,531 @@
+/* ─── Page + selector bar ─────────────────────────────────────────── */
+
+.page {
+  min-height: 100vh;
+  background-color: var(--dp-color-surface);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 16px 24px;
+  background-color: var(--dp-color-surface-container-high);
+  border-bottom: 1px solid var(--dp-color-outline-variant);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.barLabel {
+  font-family: var(--dp-sem-font-code);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dp-color-on-surface-variant);
+}
+
+.varBtn {
+  font-family: var(--dp-sem-font-body);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: var(--dp-radius-pill);
+  border: 1px solid var(--dp-color-outline-variant);
+  color: var(--dp-color-on-surface);
+  text-decoration: none;
+  transition: background-color var(--dp-sem-motion-interactive);
+}
+
+.varBtn:hover {
+  background-color: var(--dp-color-surface-container-highest);
+}
+
+.varBtnActive {
+  background-color: var(--dp-color-primary);
+  border-color: var(--dp-color-primary);
+  color: var(--dp-color-on-primary);
+}
+
+.varBtn:focus-visible {
+  outline: 2px solid var(--dp-color-primary);
+  outline-offset: 2px;
+}
+
+.barDesc {
+  font-family: var(--dp-sem-font-body);
+  font-size: 13px;
+  color: var(--dp-color-on-surface-variant);
+}
+
+.gridSection {
+  padding: 64px 0 96px;
+}
+
+.container {
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: 120px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+/* ─── Hues: one palette color per card ────────────────────────────── */
+
+.hueCyan {
+  --card-hue: var(--dp-color-electric-cyan-400);
+  --card-hue-soft: var(--dp-color-electric-cyan-300);
+  --card-hue-deep: var(--dp-color-electric-cyan-600);
+}
+
+.hueCoral {
+  --card-hue: var(--dp-color-coral-400);
+  --card-hue-soft: var(--dp-color-coral-300);
+  --card-hue-deep: var(--dp-color-coral-600);
+}
+
+.hueSky {
+  --card-hue: var(--dp-color-sky-blue-400);
+  --card-hue-soft: var(--dp-color-sky-blue-300);
+  --card-hue-deep: var(--dp-color-sky-blue-600);
+}
+
+.huePlum {
+  --card-hue: var(--dp-color-plum-400);
+  --card-hue-soft: var(--dp-color-plum-300);
+  --card-hue-deep: var(--dp-color-plum-600);
+}
+
+.viz {
+  width: 100%;
+  height: 100%;
+}
+
+/* ─── Option 1 · Signal Glow ──────────────────────────────────────── */
+
+.glowCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  min-height: 340px;
+  background-color: var(--dp-color-space-grey-950);
+  border: 1px solid var(--dp-color-alpha-light-10);
+  border-radius: var(--dp-sem-radius-card);
+  overflow: hidden;
+  isolation: isolate;
+  text-decoration: none;
+  transition:
+    transform  var(--dp-sem-motion-component),
+    box-shadow var(--dp-sem-motion-component);
+}
+
+.glowCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--dp-sem-shadow-card-hover);
+}
+
+.glowCard:focus-visible {
+  outline: 2px solid var(--card-hue);
+  outline-offset: 3px;
+}
+
+.glowBlob {
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--card-hue) 55%, transparent) 0%,
+    transparent 70%
+  );
+  filter: blur(60px);
+  z-index: 0;
+  pointer-events: none;
+  transition: opacity var(--dp-sem-motion-component);
+}
+
+.glowCard:hover .glowBlob {
+  opacity: 0.8;
+}
+
+.glowCard > *:not(.glowBlob) {
+  position: relative;
+  z-index: 1;
+}
+
+.glowTop {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.chip {
+  font-family: var(--dp-sem-font-code);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: var(--dp-radius-pill);
+  color: var(--card-hue-soft);
+  border: 1px solid color-mix(in srgb, var(--card-hue) 45%, transparent);
+}
+
+.chipGhost {
+  font-family: var(--dp-sem-font-code);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: var(--dp-radius-pill);
+  color: var(--dp-color-alpha-light-60);
+  border: 1px solid var(--dp-color-alpha-light-10);
+}
+
+.glowValue {
+  margin: 0;
+  font-family: var(--dp-sem-font-display);
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--card-hue-soft);
+}
+
+.glowValueLabel {
+  margin: 8px 0 0;
+  font-family: var(--dp-sem-font-code);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dp-color-alpha-light-80);
+}
+
+.glowHeadline {
+  margin: 20px 0 0;
+  font-family: var(--dp-sem-font-display);
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--dp-color-neutral-white);
+  flex-grow: 1;
+}
+
+.glowMetrics {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  margin: 24px 0 0;
+  padding: 16px 0 0;
+  border-top: 1px solid var(--dp-color-alpha-light-10);
+  font-family: var(--dp-sem-font-body);
+  font-size: 13px;
+  color: var(--dp-color-alpha-light-80);
+}
+
+.glowMetrics strong {
+  font-family: var(--dp-sem-font-display);
+  font-weight: 700;
+  color: var(--dp-color-neutral-white);
+}
+
+.glowCta {
+  margin-top: 16px;
+  font-family: var(--dp-sem-font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--card-hue-soft);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: color-mix(in srgb, var(--card-hue) 50%, transparent);
+  align-self: flex-start;
+}
+
+.glowCard:hover .glowCta {
+  text-decoration-color: var(--card-hue-soft);
+}
+
+/* ─── Option 2 · Sector Panel ─────────────────────────────────────── */
+
+.panelCard {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 28px 28px;
+  background-color: var(--dp-color-surface-container-low);
+  border: 1px solid var(--dp-color-outline-variant);
+  border-radius: var(--dp-sem-radius-card);
+  box-shadow: var(--dp-sem-shadow-card);
+  text-decoration: none;
+  transition:
+    transform  var(--dp-sem-motion-component),
+    box-shadow var(--dp-sem-motion-component);
+}
+
+.panelCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--dp-sem-shadow-card-hover);
+}
+
+.panelCard:focus-visible {
+  outline: 2px solid var(--card-hue);
+  outline-offset: 3px;
+}
+
+.panelViz {
+  position: relative;
+  height: 180px;
+  margin: 8px 0 20px;
+  border-radius: var(--dp-radius-100);
+  border: 1px solid color-mix(in srgb, var(--card-hue) 25%, transparent);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Hue tint over the photo, so each card still carries its palette color */
+.panelViz::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--card-hue) 30%, transparent),
+    color-mix(in srgb, var(--dp-color-space-grey-950) 35%, transparent)
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.panelImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.panelEyebrow {
+  margin: 0 0 10px;
+  font-family: var(--dp-sem-font-code);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--card-hue-soft);
+}
+
+.panelHeadline {
+  margin: 0;
+  font-family: var(--dp-sem-font-display);
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--dp-color-on-surface);
+  flex-grow: 1;
+}
+
+.panelMetrics {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 20px 0 0;
+  padding: 16px 0 0;
+  border-top: 1px solid var(--dp-color-outline-variant);
+}
+
+.panelMetrics li {
+  display: flex;
+  flex-direction: column;
+}
+
+.panelValue {
+  font-family: var(--dp-sem-font-display);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--dp-color-on-surface);
+}
+
+.panelLabel {
+  margin-top: 4px;
+  font-family: var(--dp-sem-font-code);
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--dp-color-on-surface-variant);
+}
+
+.panelBtn {
+  margin-top: 20px;
+  align-self: flex-start;
+  font-family: var(--dp-sem-font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--card-hue-soft);
+  transition: opacity var(--dp-sem-motion-interactive);
+}
+
+.panelCard:hover .panelBtn {
+  opacity: 0.75;
+}
+
+/* ─── Option 3 · Metrics First ────────────────────────────────────── */
+
+.bandCard {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--dp-color-surface-container-low);
+  border: 1px solid var(--dp-color-outline-variant);
+  border-radius: var(--dp-sem-radius-card);
+  box-shadow: var(--dp-sem-shadow-card);
+  overflow: hidden;
+  text-decoration: none;
+  transition:
+    transform  var(--dp-sem-motion-component),
+    box-shadow var(--dp-sem-motion-component);
+}
+
+.bandCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--dp-sem-shadow-card-hover);
+}
+
+.bandCard:focus-visible {
+  outline: 2px solid var(--card-hue);
+  outline-offset: 3px;
+}
+
+.band {
+  position: relative;
+  padding: 32px 28px;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--card-hue-deep) 55%, var(--dp-color-space-grey-950)),
+    var(--dp-color-space-grey-950)
+  );
+  isolation: isolate;
+}
+
+.bandViz {
+  position: absolute;
+  inset: 0;
+  color: var(--card-hue);
+  opacity: 0.28;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bandMetrics {
+  position: relative;
+  z-index: 1;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+.bandMetrics li {
+  display: flex;
+  flex-direction: column;
+}
+
+.bandValue {
+  font-family: var(--dp-sem-font-display);
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--dp-color-neutral-white);
+}
+
+.bandLabel {
+  margin-top: 6px;
+  font-family: var(--dp-sem-font-code);
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--dp-color-alpha-light-80);
+}
+
+.bandBody {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 24px 28px 28px;
+}
+
+.bandEyebrow {
+  margin: 0 0 10px;
+  font-family: var(--dp-sem-font-code);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--card-hue-soft);
+}
+
+.bandHeadline {
+  margin: 0;
+  font-family: var(--dp-sem-font-display);
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--dp-color-on-surface);
+  flex-grow: 1;
+}
+
+.bandCta {
+  margin-top: 20px;
+  align-self: flex-start;
+  font-family: var(--dp-sem-font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--card-hue-soft);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: color-mix(in srgb, var(--card-hue) 45%, transparent);
+}
+
+.bandCard:hover .bandCta {
+  text-decoration-color: var(--card-hue-soft);
+}
+
+/* ─── Responsive ──────────────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .container { padding-inline: 48px; }
+}
+
+@media (max-width: 768px) {
+  .container { padding-inline: 24px; }
+  .grid      { grid-template-columns: 1fr; }
+  .glowValue { font-size: 56px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glowCard,
+  .panelCard,
+  .bandCard {
+    transition: none;
+  }
+  .glowCard:hover,
+  .panelCard:hover,
+  .bandCard:hover {
+    transform: none;
+    box-shadow: var(--dp-sem-shadow-card);
+  }
+}

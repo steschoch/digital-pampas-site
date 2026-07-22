@@ -22,6 +22,7 @@ import BlogPostPage from './pages/BlogPostPage/BlogPostPage';
 import CaseStudiesPage from './pages/CaseStudiesPage/CaseStudiesPage';
 import CaseStudyPage from './pages/CaseStudyPage/CaseStudyPage';
 import PreviewPage from './pages/PreviewPage/PreviewPage';
+import CardsPreviewPage from './pages/CardsPreviewPage/CardsPreviewPage';
 
 function HomePage() {
   const { pathname } = useLocation();
@@ -102,6 +103,7 @@ export default function App() {
           }
         />
         {/* Network animation preview — /preview/1, /preview/2, /preview/3 */}
+        <Route path="/preview/cards/:v?" element={<CardsPreviewPage />} />
         <Route path="/preview/:v" element={<PreviewPage />} />
       </Routes>
     </BrowserRouter>

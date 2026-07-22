@@ -2,7 +2,7 @@
 
 .header {
   background-color: var(--dp-color-surface);
-  padding-block: 96px 64px;
+  padding-block: 96px 32px;
 }
 
 .container {
@@ -40,70 +40,155 @@
   max-width: 560px;
 }
 
+/* ─── Sector hues (one color per sector, DS palette) ──────────────── */
+
+.hueCyan {
+  --card-hue: var(--dp-color-electric-cyan-400);
+  --card-hue-soft: var(--dp-color-electric-cyan-300);
+  --card-hue-deep: var(--dp-color-electric-cyan-600);
+}
+
+.hueCoral {
+  --card-hue: var(--dp-color-coral-400);
+  --card-hue-soft: var(--dp-color-coral-300);
+  --card-hue-deep: var(--dp-color-coral-600);
+}
+
+.hueSky {
+  --card-hue: var(--dp-color-sky-blue-400);
+  --card-hue-soft: var(--dp-color-sky-blue-300);
+  --card-hue-deep: var(--dp-color-sky-blue-600);
+}
+
+.huePlum {
+  --card-hue: var(--dp-color-plum-400);
+  --card-hue-soft: var(--dp-color-plum-300);
+  --card-hue-deep: var(--dp-color-plum-600);
+}
+
+/* Light mode: text accents drop to the 600 tone for contrast on light surfaces */
+:global([data-color-scheme='light']) .hueCyan  { --card-hue-soft: var(--dp-color-electric-cyan-600); }
+:global([data-color-scheme='light']) .hueCoral { --card-hue-soft: var(--dp-color-coral-600); }
+:global([data-color-scheme='light']) .hueSky   { --card-hue-soft: var(--dp-color-sky-blue-600); }
+:global([data-color-scheme='light']) .huePlum  { --card-hue-soft: var(--dp-color-plum-600); }
+
+/* ─── Filter pills ────────────────────────────────────────────────── */
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.pill {
+  font-family: var(--dp-sem-font-body);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 9px 20px;
+  border-radius: var(--dp-radius-pill);
+  border: 1px solid var(--dp-color-outline-variant);
+  background: none;
+  color: var(--dp-color-on-surface-variant);
+  cursor: pointer;
+  transition:
+    color        var(--dp-sem-motion-interactive),
+    border-color var(--dp-sem-motion-interactive),
+    background-color var(--dp-sem-motion-interactive);
+}
+
+.pill:hover {
+  border-color: color-mix(in srgb, var(--card-hue, var(--dp-color-primary)) 60%, transparent);
+  color: var(--card-hue-soft, var(--dp-color-on-surface));
+}
+
+.pill:focus-visible {
+  outline: 2px solid var(--card-hue, var(--dp-color-primary));
+  outline-offset: 2px;
+}
+
+/* Active sector pill: filled with the sector color */
+.pillActive {
+  background-color: color-mix(in srgb, var(--card-hue) 18%, transparent);
+  border-color: var(--card-hue);
+  color: var(--card-hue-soft);
+}
+
+/* Active "All" pill: primary */
+.pillAllActive {
+  background-color: color-mix(in srgb, var(--dp-color-primary) 18%, transparent);
+  border-color: var(--dp-color-primary);
+  color: var(--dp-color-primary);
+}
+
 /* ─── Grid section ────────────────────────────────────────────────── */
 
 .gridSection {
   background-color: var(--dp-color-surface);
-  padding-bottom: 96px;
+  padding-block: 40px 96px;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
 }
 
-/* ─── Card ────────────────────────────────────────────────────────── */
-
-.cardWrapper {
-  display: flex;
-  flex-direction: column;
-}
+/* ─── Card (Sector Panel) ─────────────────────────────────────────── */
 
 .card {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 28px;
+  padding: 20px 28px 28px;
   background-color: var(--dp-color-surface-container-low);
   border: 1px solid var(--dp-color-outline-variant);
   border-radius: var(--dp-sem-radius-card);
   box-shadow: var(--dp-sem-shadow-card);
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
+  text-decoration: none;
   transition:
-    transform    var(--dp-sem-motion-component),
-    box-shadow   var(--dp-sem-motion-component);
-}
-
-/* Segment background image — subtle texture at low opacity */
-.card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: var(--card-bg);
-  background-size: cover;
-  background-position: center top;
-  opacity: 0.09;
-  z-index: 0;
-  pointer-events: none;
-  transition: opacity var(--dp-sem-motion-component);
-}
-
-.card:hover::before {
-  opacity: 0.13;
-}
-
-/* Push all card content above the bg layer */
-.card > * {
-  position: relative;
-  z-index: 1;
+    transform  var(--dp-sem-motion-component),
+    box-shadow var(--dp-sem-motion-component);
 }
 
 .card:hover {
   transform: translateY(-4px);
   box-shadow: var(--dp-sem-shadow-card-hover);
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--card-hue);
+  outline-offset: 3px;
+}
+
+.cardViz {
+  position: relative;
+  height: 180px;
+  margin: 8px 0 20px;
+  border-radius: var(--dp-radius-100);
+  border: 1px solid color-mix(in srgb, var(--card-hue) 25%, transparent);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Hue tint over the photo, so each card carries its sector color */
+.cardViz::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--card-hue) 30%, transparent),
+    color-mix(in srgb, var(--dp-color-space-grey-950) 35%, transparent)
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.cardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .cardEyebrow {
@@ -113,98 +198,75 @@
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--dp-color-on-surface-variant);
+  color: var(--card-hue-soft);
 }
 
 .cardHeadline {
-  margin: 0 0 20px;
+  margin: 0;
   font-family: var(--dp-sem-font-display);
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 700;
-  line-height: 1.3;
+  line-height: 1.35;
   color: var(--dp-color-on-surface);
+  flex-grow: 1;
 }
 
-/* ─── Metrics ─────────────────────────────────────────────────────── */
-
-.metricsRow {
-  display: flex;
-  gap: 24px;
-  margin-bottom: 20px;
+.cardMetrics {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 20px 0 0;
+  padding: 16px 0 0;
+  border-top: 1px solid var(--dp-color-outline-variant);
 }
 
-.metric {
+.cardMetrics li {
   display: flex;
   flex-direction: column;
 }
 
-.metricValue {
+.cardValue {
   font-family: var(--dp-sem-font-display);
-  font-size: 32px;
+  font-size: 26px;
   font-weight: 700;
   line-height: 1;
-  letter-spacing: -0.03em;
-  /* color set via inline style from accent map */
+  letter-spacing: -0.02em;
+  color: var(--dp-color-on-surface);
 }
 
-.metricLabel {
+.cardLabel {
   margin-top: 4px;
   font-family: var(--dp-sem-font-code);
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1.4;
   color: var(--dp-color-on-surface-variant);
 }
 
-/* ─── Excerpt ─────────────────────────────────────────────────────── */
-
-.excerpt {
-  margin: 0;
-  font-family: var(--dp-sem-font-body);
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--dp-color-on-surface-variant);
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  flex-grow: 1;
-}
-
-/* ─── CTA ─────────────────────────────────────────────────────────── */
-
-.cta {
-  display: inline-block;
+.cardCta {
   margin-top: 20px;
+  align-self: flex-start;
   font-family: var(--dp-sem-font-body);
   font-size: 14px;
   font-weight: 500;
-  color: var(--dp-color-primary);
-  text-decoration: none;
-  align-self: flex-start;
+  color: var(--card-hue-soft);
   transition: opacity var(--dp-sem-motion-interactive);
 }
 
-.cta:hover {
+.card:hover .cardCta {
   opacity: 0.75;
-}
-
-.cta:focus-visible {
-  outline: 2px solid var(--dp-color-primary);
-  outline-offset: 3px;
-  border-radius: 4px;
 }
 
 /* ─── Responsive ──────────────────────────────────────────────────── */
 
 @media (max-width: 1024px) {
   .container { padding-inline: 48px; }
-  .grid      { grid-template-columns: 1fr 1fr; }
   .h1        { font-size: 48px; }
 }
 
 @media (max-width: 768px) {
-  .header      { padding-block: 64px 48px; }
-  .gridSection { padding-bottom: 64px; }
+  .header      { padding-block: 64px 24px; }
+  .gridSection { padding-block: 24px 64px; }
   .container   { padding-inline: 24px; }
   .grid        { grid-template-columns: 1fr; }
   .h1          { font-size: 40px; }
@@ -213,5 +275,5 @@
 @media (prefers-reduced-motion: reduce) {
   .card       { transition: none; }
   .card:hover { transform: none; box-shadow: var(--dp-sem-shadow-card); }
-  .cta        { transition: none; }
+  .pill       { transition: none; }
 }

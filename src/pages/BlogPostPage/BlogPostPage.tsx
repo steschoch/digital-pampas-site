@@ -71,8 +71,15 @@ export default function BlogPostPage() {
   return (
     <article className={styles.article}>
 
-      {/* ─── Article header ───────────────────────────────────────── */}
+      {/* ─── Article header: full-bleed image + dark blur scrim ───── */}
       <header className={styles.articleHeader}>
+        <img
+          className={styles.heroImg}
+          src={`/images/blog/${post.slug}.jpg`}
+          alt=""
+          aria-hidden="true"
+        />
+        <div className={styles.heroScrim} aria-hidden="true" />
         <div className={styles.headerContainer}>
           <AnimatedSection animation="fade-up" once>
             <div className={styles.tags} aria-label="Tags">
