@@ -107,9 +107,10 @@
   padding-inline: 120px;
 }
 
-/* Left-aligned with the title above; capped for a readable line length */
+/* Column centered on the page; text inside stays left-aligned */
 .body {
   max-width: 720px;
+  margin-inline: auto;
 }
 
 /* ─── Content blocks ──────────────────────────────────────────────── */
