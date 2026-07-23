@@ -82,10 +82,14 @@ O DS é instalado via `npm ci` no build da Vercel; autenticação via variável 
 
 ---
 
-## Estado atual (2026-07-21)
+## Estado atual (2026-07-22)
 
 **Produção:** https://digital-pampas-site.vercel.app/ (ou URL Vercel do projeto)
 **GitHub:** https://github.com/steschoch/digital-pampas-site
+
+**Case studies: fluxograma animado do "system map" (APROVADO pela Ste, commitado e pushado 2026-07-22, commit 9adfc51):**
+Cada case study (`/case-studies/<slug>`) agora renderiza a seção "The system" com o componente `CaseFlow` do DS (`@steschoch/digital-pampas-ds@1.6.0+`): caixas com título+bullets/chips ligadas por flechas SVG que se desenham ao entrar na tela, com o conteúdo e o caminho EXATOS dos 8 diagramas do site atual (digitalpampas.com/case-studies), transcritos verbatim. Dados em `src/data/caseFlows.ts` (um `CaseFlowData` por slug). Cor do trilho herda o acento do setor (`--cf-accent: var(--case-hue-soft)` em `CaseStudyPage.module.css`). Fallback pra lista de layers antiga se um case não tiver `caseFlows[slug]` definido (não deveria acontecer, os 8 têm).
+Importante: **não confundir com o `SystemFlow`** (componente diferente, criado e depois removido do DS nesta mesma sessão) — aquele era pra Fase 5 do portal (campaign status), não pro site. Ver `CLAUDE.md` do DS e do portal.
 
 **Case studies redesenhados (APROVADO pela Ste, commitado e deployado em 2026-07-22, commit 4dc5f1b):**
 Também no mesmo commit: blog post com hero de imagem full-bleed + scrim escuro com blur (imagens em `public/images/blog/<slug>.jpg`), corpo do post alinhado ao título, CTA do case como seção full-bleed, logos das ferramentas na Stack (`public/logos/`, favicons baixados), light mode acessível (acentos 300→600 via `[data-color-scheme='light']`), TL;DR colorido (Problem = coral/salmão).
