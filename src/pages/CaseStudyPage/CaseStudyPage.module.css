@@ -323,7 +323,15 @@
   color: var(--dp-color-on-surface-variant);
 }
 
-/* ─── Layer cards ─────────────────────────────────────────────────── */
+/* ─── System flow diagram (animated system map) ───────────────────── */
+
+.caseFlow {
+  /* Diagram adopts the sector accent instead of the DS primary. */
+  --cf-accent: var(--case-hue-soft);
+  margin-top: 24px;
+}
+
+/* ─── Layer cards (fallback when a case has no flow diagram) ───────── */
 
 .layerList {
   list-style: none;

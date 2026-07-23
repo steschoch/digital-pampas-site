@@ -1,5 +1,7 @@
 import { Link, Navigate, useParams } from 'react-router-dom';
+import { CaseFlow } from '@steschoch/digital-pampas-ds';
 import { caseStudies, getCaseStudyBySlug, SECTORS } from '@/data/caseStudies';
+import { caseFlows } from '@/data/caseFlows';
 import { SECTOR_HUE } from '@/pages/CaseStudiesPage/CaseStudiesPage';
 import styles from './CaseStudyPage.module.css';
 
@@ -29,6 +31,7 @@ export default function CaseStudyPage() {
   const hue = styles[SECTOR_HUE[cs.sector]];
   const sectorLabel = SECTORS.find(s => s.key === cs.sector)?.label ?? cs.industry;
   const related = caseStudies.filter(c => c.slug !== cs.slug).slice(0, 3);
+  const flow = caseFlows[cs.slug];
 
   return (
     <main className={`${styles.page} ${hue}`}>
@@ -126,6 +129,16 @@ export default function CaseStudyPage() {
           <p className={styles.kicker}>Architecture</p>
           <h2 className={styles.h2}>The system</h2>
           <p className={styles.sectionIntro}>{cs.systemIntro}</p>
+          {flow ? (
+            <CaseFlow
+              className={styles.caseFlow}
+              decorative
+              topNote={flow.topNote}
+              bottomNote={flow.bottomNote}
+              nodes={flow.nodes}
+              edges={flow.edges}
+            />
+          ) : (
           <ol className={styles.layerList}>
             {cs.layers.map((l, i) => (
               <li key={l.title} className={styles.layerCard}>
@@ -137,6 +150,7 @@ export default function CaseStudyPage() {
               </li>
             ))}
           </ol>
+          )}
         </div>
       </section>
 
